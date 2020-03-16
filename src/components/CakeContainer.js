@@ -6,22 +6,24 @@ import {buyCake} from './redux/cake/cakeAction';
 function CakeContainer(props) {
     return (
         <div>
-        <h3>Number of cakes {props.numOfCakes}</h3>
-            <button onClick={props.buyCake}>Buy cake</button>
+        <h3>Number of cakes {props.data}</h3>
+            <button onClick={(e)=>props.buyCake(Math.random())}>Buy cake</button>
         </div>
     )
 }
 
 const mapStateToProps = (state) =>{
+
+    console.log("state",state);
    return {
-       numOfCakes: state.numOfCakes
+       data: state.numOfCakes
    }
 }
 
 const mapDispatchToProps =  dispatch =>{
     
     return {
-         buyCake:()=>dispatch(buyCake())
+         buyCake:(d)=>dispatch(buyCake(d))
     }
 }
 
